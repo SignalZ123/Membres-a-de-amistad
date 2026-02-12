@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCI - UCV</title>
+    <link rel="icon" type="image/png" href="./Public/logoucv.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&family=Pacifico&family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="./stilos/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Página 1: Formulario -->
+        <div class="page form-page active" id="form-page">
+            <div class="logo-container">
+                <div class="logo-placeholder">
+                    <img src="./Public/logoucv.png" alt="logoUCV" crossorigin="anonymous">
+                </div>
+                <div class="university-name-form">Universidad Cesar Vallejo</div>
+                <div class="department-name">Centro de Información</div>
+            </div>
+            
+            <div class="form-header">
+                <div class="icon-decoration">
+                    <span>♥</span>
+                    <span>📚</span>
+                    <span>♥</span>
+                </div>
+                <h1>Día de la Amistad</h1>
+                <div class="subtitle">Centro de Información</div>
+                <p class="description">Genera tu membresía honoraria y celebra ser parte de nuestra biblioteca de historias</p>
+            </div>
+            
+            <form id="membership-form">
+                <div class="form-group">
+                    <label for="name">Nombre Completo</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        required
+                        placeholder="Escribe tu nombre completo"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="role">Tu Rol en la Universidad</label>
+                    <select id="role" name="role" required>
+                        <option value="">Selecciona tu rol</option>
+                        <option value="docente">Docente</option>
+                        <option value="administrativo">Administrativo</option>
+                        <option value="escuela">Escuela Académica</option>
+                        <option value="seguridad">Área de Seguridad</option>
+                        <option value="transportes">Área de Transportes</option>
+                        <option value="admision">Área de Admisión y Promoción</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn-generate">
+                    <span>✨ Generar Mi Membresía ✨</span>
+                </button>
+            </form>
+        </div>
+        
+        <!-- Página 2: Tarjeta de Membresía -->
+        <div class="page card-page" id="card-page">
+            <div id="membership-card">
+                <div class="card-content">
+                    <span class="book-decoration">📖</span>
+                    <span class="book-decoration">📚</span>
+                    <span class="book-decoration">📕</span>
+                    
+                    <div class="card-header">
+                        <div class="card-logo">
+                            <img src="./Public/logoucv.png" alt="logoUCV" crossorigin="anonymous">
+                        </div>
+                        <div class="university-name">Universidad Cesar Vallejo</div>
+                        <div class="info-center">Centro de Información</div>
+                    </div>
+                    
+                    <div class="card-title">
+                        <h3>MEMBRESÍA HONORARIA<br>DE AMISTAD</h3>
+                        <div class="subtitle">Biblioteca de Historias · 2026</div>
+                    </div>
+                    
+                    <div class="recipient-section">
+                        <div class="recipient-label">Se otorga a</div>
+                        <div class="recipient-name" id="display-name">Tu Nombre Aquí</div>
+                        <div class="recipient-role" id="display-role">Tu Rol</div>
+                    </div>
+                    
+                    <div class="message-section">
+                        <p class="message-text" id="display-message">
+                            "Eres pieza fundamental de nuestra biblioteca de historias"
+                        </p>
+                    </div>
+                    
+                    <div class="metadata-section">
+                        <div class="metadata-title">Ficha Bibliográfica</div>
+                        <div class="metadata-grid">
+                            <div class="metadata-item">
+                                <div class="metadata-label">Origen</div>
+                                <div class="metadata-value">Comunidad Universitaria</div>
+                            </div>
+                            <div class="metadata-item">
+                                <div class="metadata-label">Categoría</div>
+                                <div class="metadata-value">Talento e Inspiración</div>
+                            </div>
+                            <div class="metadata-item">
+                                <div class="metadata-label">Signatura</div>
+                                <div class="metadata-value">AMISTAD-2026</div>
+                            </div>
+                            <div class="metadata-item">
+                                <div class="metadata-label">Registro</div>
+                                <div class="metadata-value" id="display-registry">REG-2026-0000</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="seal">
+                        <div class="seal-text">EDICION ESPECIAL</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn-action btn-download" onclick="downloadCard()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    Descargar Imagen
+                </button>
+                <button class="btn-action" onclick="printCard()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                        <rect x="6" y="14" width="12" height="8"/>
+                    </svg>
+                    Imprimir PDF
+                </button>
+                <button class="btn-action" onclick="resetForm()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+                        <path d="M21 3v5h-5"/>
+                        <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+                        <path d="M3 21v-5h5"/>
+                    </svg>
+                    Nueva Membresía
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    <script src="./js/app.js" defer></script>
+</body>
+</html>

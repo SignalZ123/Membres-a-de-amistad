@@ -1,0 +1,912 @@
+:root {
+  --azul-marino: #0a2463;
+  --rojo-passion: #c41e3a;
+  --rosa-suave: #f5f0e1;
+  --rosa-claro: #f9efd5;
+  --crema: #faf7f0;
+  --dorado: #b8860b;
+  --texto-oscuro: #2c2c2c;
+  --texto-gris: #5a5a5a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(
+    135deg,
+    #ffe5ec 0%,
+    #fff0f5 25%,
+    #e6f3ff 50%,
+    #ffe5ec 75%,
+    #fff0f5 100%
+  );
+  min-height: 100vh;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(196, 30, 58, 0.08) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(10, 36, 99, 0.08) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 192, 203, 0.15) 0%,
+      transparent 60%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: "♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+  color: rgba(196, 30, 58, 0.05);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: space-around;
+  justify-content: space-around;
+  pointer-events: none;
+  z-index: 0;
+  line-height: 4;
+  animation: floatHearts 20s infinite linear;
+}
+
+@keyframes floatHearts {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+.container {
+  max-width: 1000px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Sistema de páginas con transiciones */
+.page {
+  display: none;
+  animation: fadeInScale 0.6s ease-out;
+}
+
+.page.active {
+  display: block;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Página 1 Formulario */
+.form-page {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 3rem 2.5rem;
+  border-radius: 30px;
+  box-shadow:
+    0 25px 80px rgba(196, 30, 58, 0.2),
+    0 10px 40px rgba(10, 36, 99, 0.15);
+  backdrop-filter: blur(10px);
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-page::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(
+    circle,
+    rgba(196, 30, 58, 0.1) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.form-page::after {
+  content: "📚";
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  font-size: 8rem;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.form-header .icon-decoration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+.form-header h1 {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  color: var(--rojo-passion);
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(196, 30, 58, 0.2);
+  line-height: 1.2;
+}
+
+.form-header .subtitle {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: var(--azul-marino);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.form-header .description {
+  font-size: 0.95rem;
+  color: var(--texto-gris);
+  line-height: 1.6;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logo-placeholder {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1rem;
+  background: linear-gradient(135deg, 0%, #eeeef0 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 30px rgba(10, 36, 99, 0.3);
+  border: 4px solid var(--azul-marino);
+}
+
+.logo-placeholder img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
+
+.university-name-form {
+  font-family: "Playfair Display", serif;
+  font-size: 1.2rem;
+  color: var(--azul-marino);
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.department-name {
+  font-size: 0.85rem;
+  color: var(--texto-gris);
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.form-group {
+  margin-bottom: 1.8rem;
+  position: relative;
+  z-index: 1;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: var(--azul-marino);
+  margin-bottom: 0.7rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-group label::before {
+  content: "♥";
+  color: var(--rojo-passion);
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border: 2px solid #ffb6c1;
+  border-radius: 15px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+  box-shadow: 0 2px 10px rgba(196, 30, 58, 0.05);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--rojo-passion);
+  box-shadow:
+    0 0 0 4px rgba(196, 30, 58, 0.1),
+    0 4px 15px rgba(196, 30, 58, 0.15);
+  transform: translateY(-2px);
+}
+
+.btn-generate {
+  width: 100%;
+  padding: 1.3rem;
+  background: linear-gradient(135deg, var(--rojo-passion) 0%, #a01728 100%);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 8px 25px rgba(196, 30, 58, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-generate::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.6s,
+    height 0.6s;
+}
+
+.btn-generate:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-generate:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(196, 30, 58, 0.5);
+}
+
+.btn-generate:active {
+  transform: translateY(-1px);
+}
+
+.btn-generate span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Página 2 Tarjeta de Membresía */
+.card-page {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#membership-card {
+  background: var(--rosa-suave);
+  border-radius: 25px;
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  position: relative;
+  overflow: hidden;
+  border: 10px solid white;
+  transition: all 0.5s ease;
+}
+
+#membership-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 15px;
+  background: linear-gradient(
+    90deg,
+    var(--azul-marino) 0%,
+    var(--azul-marino) 33%,
+    var(--rojo-passion) 33%,
+    var(--rojo-passion) 66%,
+    var(--azul-marino) 66%,
+    var(--azul-marino) 100%
+  );
+}
+
+/* Decoraciones de corazones en las esquinas */
+#membership-card::after {
+  content: "♥ ♥ ♥ ♥";
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 1.5rem;
+  color: rgba(196, 30, 58, 0.1);
+  letter-spacing: 2rem;
+  pointer-events: none;
+}
+
+.card-content {
+  padding: 3.5rem 3rem;
+  position: relative;
+}
+
+/* Iconos decorativos de libros */
+.book-decoration {
+  position: absolute;
+  font-size: 4rem;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.book-decoration:nth-child(1) {
+  top: 60px;
+  left: 30px;
+  transform: rotate(-15deg);
+}
+
+.book-decoration:nth-child(2) {
+  top: 60px;
+  right: 30px;
+  transform: rotate(15deg);
+}
+
+.book-decoration:nth-child(3) {
+  bottom: 180px;
+  left: 30px;
+  transform: rotate(10deg);
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  border-bottom: 3px double var(--azul-marino);
+  padding-bottom: 1.5rem;
+  position: relative;
+}
+
+.card-logo {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 1rem;
+  background: linear-gradient(135deg, 0%, #f4f5f7 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(10, 36, 99, 0.3);
+  border: 4px solid var(--azul-marino);
+}
+
+.card-logo img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+.university-name {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  color: var(--azul-marino);
+  font-weight: 900; 
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.5px;
+}
+
+.info-center {
+  font-size: 1rem;
+  color: #3a3a3a; 
+  font-weight: 700; 
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.info-center::before,
+.info-center::after {
+  content: "📖";
+  font-size: 1.2rem;
+}
+
+.card-title {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.card-title h3 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  color: #a01526; 
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+  text-shadow: 1px 1px 2px rgba(196, 30, 58, 0.15); 
+}
+
+.card-title .subtitle {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: #06183d;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.recipient-section {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding: 2rem 1.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 182, 193, 0.15) 0%,
+    rgba(10, 36, 99, 0.05) 100%
+  );
+  border-left: 5px solid var(--rojo-passion);
+  border-right: 5px solid var(--azul-marino);
+  border-radius: 15px;
+  position: relative;
+}
+
+.recipient-section::before {
+  content: "♥";
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: var(--rojo-passion);
+  background: var(--crema);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.recipient-label {
+  font-size: 0.85rem;
+  color: #3a3a3a; 
+  font-weight: 900; 
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.recipient-name {
+  font-family: "Pacifico", cursive;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: #06183d; 
+  margin-bottom: 0.8rem;
+  line-height: 1.2;
+  text-shadow: 1px 1px 2px rgba(10, 36, 99, 0.2); 
+  font-weight: 400; 
+}
+
+.recipient-role {
+  font-size: 1.1rem;
+  color: #3a3a3a; 
+  font-weight: 700; 
+  font-style: italic;
+}
+
+.message-section {
+  text-align: center;
+  margin: 2.5rem 0;
+  padding: 2rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(196, 30, 58, 0.1);
+  border: 2px dashed var(--rosa-suave);
+  position: relative;
+}
+
+.message-section::before,
+.message-section::after {
+  content: "📚";
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.3;
+}
+
+.message-section::before {
+  top: 10px;
+  left: 15px;
+}
+
+.message-section::after {
+  bottom: 10px;
+  right: 15px;
+}
+
+.message-text {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  color: #1a1a1a; 
+  line-height: 1.7;
+  font-weight: 700;
+}
+
+.metadata-section {
+  margin-top: 2.5rem;
+  padding: 2rem;
+  background: white;
+  border: 3px solid var(--azul-marino); 
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(10, 36, 99, 0.1);
+}
+
+.metadata-title {
+  font-weight: 900; 
+  font-size: 0.9rem;
+  color: var(--azul-marino);
+  margin-bottom: 1.5rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.metadata-title::before {
+  content: "📋";
+  font-size: 1.2rem;
+}
+
+.metadata-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.metadata-item {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 1rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 182, 193, 0.1) 0%,
+    rgba(10, 36, 99, 0.05) 100%
+  );
+  border-radius: 10px;
+}
+
+.metadata-label {
+  font-size: 0.75rem;
+  color: #3a3a3a; 
+  font-weight: 900; 
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.metadata-value {
+  font-size: 1rem;
+  color: #1a1a1a; 
+  font-weight: 700; 
+  font-family: "Courier New", monospace;
+}
+
+.seal {
+  position: absolute;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--rojo-passion) 0%, #8b1528 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.2;
+  transform: rotate(-15deg);
+  border: 5px solid var(--rojo-passion);
+  box-shadow: 0 6px 20px rgba(196, 30, 58, 0.3);
+}
+
+.seal-text {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: 0.75rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.3;
+  padding: 1.2rem;
+}
+
+.action-buttons {
+  margin-top: 2.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-action {
+  padding: 1.1rem 2rem;
+  background: white;
+  color: var(--azul-marino);
+  border: 2px solid var(--azul-marino);
+  border-radius: 12px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  box-shadow: 0 4px 15px rgba(10, 36, 99, 0.1);
+}
+
+.btn-action:hover {
+  background: var(--azul-marino);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(10, 36, 99, 0.25);
+}
+
+.btn-action.btn-download {
+  background: linear-gradient(135deg, var(--rojo-passion) 0%, #a01728 100%);
+  color: white;
+  border-color: var(--rojo-passion);
+}
+
+.btn-action.btn-download:hover {
+  background: linear-gradient(135deg, #a01728 0%, var(--rojo-passion) 100%);
+  box-shadow: 0 8px 25px rgba(196, 30, 58, 0.35);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Animaciones */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.card-generated {
+  animation: slideInRight 0.6s ease-out;
+}
+
+/* Estilos para impresión y canvas */
+@media print {
+  body {
+    background: white;
+    padding: 0;
+  }
+
+  body::before,
+  body::after {
+    display: none;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  .form-page,
+  .action-buttons {
+    display: none !important;
+  }
+
+  .card-page {
+    display: block !important;
+  }
+
+  #membership-card {
+    box-shadow: none;
+    border: 2px solid #ddd;
+    page-break-inside: avoid;
+  }
+
+  .seal {
+    opacity: 0.25;
+  }
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  body {
+    padding: 0.5rem;
+  }
+
+  .form-page {
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+  }
+
+  .form-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .logo-placeholder {
+    width: 100px;
+    height: 100px;
+  }
+
+  .card-content {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .card-logo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .card-logo img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .seal {
+    width: 110px;
+    height: 110px;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+
+  .seal-text {
+    font-size: 0.55rem;
+    padding: 0.8rem;
+  }
+
+  .metadata-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .btn-action {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .book-decoration {
+    font-size: 2.5rem;
+  }
+
+  .book-decoration:nth-child(1),
+  .book-decoration:nth-child(2) {
+    top: 40px;
+  }
+
+  .book-decoration:nth-child(1) {
+    left: 15px;
+  }
+
+  .book-decoration:nth-child(2) {
+    right: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .recipient-name {
+    font-size: 1.8rem;
+  }
+
+  .card-title h3 {
+    font-size: 1.6rem;
+  }
+}
